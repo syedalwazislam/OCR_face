@@ -153,7 +153,13 @@ async def verify_face_upload(
             "mode": "uploaded_selfie",
             "verification": verification,
         }
-        return response
+        return jsonable_encoder(response, custom_encoder={
+    np.bool_: bool,
+    np.integer: int,
+    np.floating: float,
+    np.ndarray: lambda x: x.tolist(),
+})
+
 
     except HTTPException:
         raise
@@ -193,7 +199,13 @@ async def verify_face_local_webcam(
             "mode": "server_webcam",
             "verification": verification,
         }
-        return response
+        return jsonable_encoder(response, custom_encoder={
+    np.bool_: bool,
+    np.integer: int,
+    np.floating: float,
+    np.ndarray: lambda x: x.tolist(),
+})
+
 
     except HTTPException:
         raise
