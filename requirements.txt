@@ -79,8 +79,6 @@ loguru>=0.5.0
 colorama>=0.4.4
 click>=8.0.0
 
-# Security Hashing
-hashlib
 
 # Type Hinting (for development)
 typing-extensions>=4.0.0
