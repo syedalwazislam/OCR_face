@@ -1,5 +1,4 @@
 FROM python:3.9-slim
-
 WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -22,29 +21,24 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libzbar0 \
     && rm -rf /var/lib/apt/lists/*
 
-# Upgrade pip
 RUN pip install --upgrade pip setuptools wheel
 RUN pip install ninja
 
-# Speed up builds
 ENV CMAKE_GENERATOR=Ninja
 ENV FORCE_CMAKE=1
 
-# Install PyTorch CPU first (important for YOLO stability)
+# Install PyTorch CPU first
 RUN pip install torch==2.1.2+cpu torchvision==0.16.2+cpu \
     -f https://download.pytorch.org/whl/torch_stable.html
 
-# Copy requirements
 COPY requirements.txt .
 
-# FIX CRITICAL ISSUE: NumPy must be pinned
-RUN pip install --no-cache-dir "numpy<2"
-
-# Install remaining dependencies
+# Install all requirements in one pass
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project
+# Force NumPy LAST so nothing can override it
+RUN pip install --no-cache-dir --force-reinstall "numpy==1.26.4"
+
 COPY . .
 
-# IMPORTANT: Railway-safe startup command
 CMD ["sh", "-c", "uvicorn api:app --host 0.0.0.0 --port ${PORT:-8000}"]
