@@ -26,23 +26,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN pip install --upgrade pip setuptools wheel
 RUN pip install ninja
 
-# Speed up C++ builds
+# Speed up builds
 ENV CMAKE_GENERATOR=Ninja
 ENV FORCE_CMAKE=1
-ENV MAKEFLAGS="-j$(nproc)"
 
-# Install torch separately (prebuilt CPU wheel)
+# Install PyTorch CPU first (important for YOLO stability)
 RUN pip install torch==2.1.2+cpu torchvision==0.16.2+cpu \
     -f https://download.pytorch.org/whl/torch_stable.html
 
 # Copy requirements
 COPY requirements.txt .
 
-# Install dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+# FIX CRITICAL ISSUE: NumPy must be pinned
+RUN pip install --no-cache-dir "numpy<2"
 
+# Install remaining dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
 # Copy project
 COPY . .
 
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "10000"]
+# IMPORTANT: Railway-safe startup command
+CMD ["sh", "-c", "uvicorn api:app --host 0.0.0.0 --port ${PORT:-8000}"]
