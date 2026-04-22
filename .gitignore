@@ -1,0 +1,16 @@
+﻿# local env / caches
+idcard_env/
+__pycache__/
+*.pyc
+.vscode/
+.ipynb_checkpoints/
+.DS_Store
+
+# big training datasets (not needed on Render)
+Dataset/
+train/
+valid/
+test/
+
+# optional: local sqlite/db artifacts
+*.sqlite3

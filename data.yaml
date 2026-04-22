@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 10
+names: ['CNIC-HHMI', 'bdate', 'country', 'edate', 'fname', 'gender', 'id', 'idate', 'name', 'picture']
+
+roboflow:
+  workspace: tsc-inlights
+  project: pakistani-cnic-data
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/tsc-inlights/pakistani-cnic-data/dataset/1
