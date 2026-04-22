@@ -1,87 +1,26 @@
-# Computer Vision
-opencv-python>=4.5.0
-numpy>=1.19.0
-pyzbar>=0.1.9
-Pillow>=8.0.0
+fastapi==0.111.1
+pydantic==2.8.2
+typing-extensions==4.12.2
+uvicorn[standard]>=0.27.0
+python-multipart>=0.0.9
+requests>=2.25.0
+python-dotenv>=1.0.0
+pyyaml>=5.4.0
 
-# OCR & Text Processing
-easyocr>=1.4.0
-pytesseract>=0.3.8
+numpy>=1.23.0
+opencv-python-headless>=4.8.0
+Pillow>=9.0.0
+easyocr>=1.7.0
+pytesseract>=0.3.10
+pyzbar>=0.1.9
 arabic-reshaper>=2.1.4
 python-bidi>=0.4.2
-jaconv>=0.3.4
 
-# Facial Recognition
 face-recognition>=1.3.0
-face-recognition-models>=0.3.0
 dlib>=19.24.0
-deepface>=0.0.79
-facenet-pytorch>=2.5.0
-mtcnn>=0.1.1
-opencv-contrib-python>=4.5.0
 
-# Deep Learning & AI
-torch>=1.8.0
-torchvision>=0.9.0
 ultralytics>=8.0.0
+torch
+torchvision
 onnxruntime>=1.8.0
-transformers>=4.20.0
-tensorflow>=2.8.0
-keras>=2.8.0
-
-# Image Processing & Enhancement
-scikit-image>=0.18.0
-imutils>=0.5.4
-scikit-learn>=1.0.0
-imageio>=2.9.0
-wand>=0.6.0
-
-# Data Handling & Analysis
 pandas>=1.3.0
-openpyxl>=3.0.0
-scipy>=1.6.0
-matplotlib>=3.3.0
-seaborn>=0.11.0
-
-# Web Framework & API
-flask>=2.0.0
-flask-cors>=3.0.0
-requests>=2.25.0
-flask-restful>=0.3.9
-waitress>=2.1.0
-FastAPI
-
-# Configuration & Utilities
-pyyaml>=5.4.0
-python-dotenv>=0.19.0
-configparser>=5.2.0
-
-# File Operations & Path Handling
-pathlib2>=2.3.0; python_version < '3.4'
-shutilwhich>=1.1.0
-
-# Image Download & Network
-urllib3>=1.26.0
-certifi>=2021.5.30
-
-# Date/Time Processing
-python-dateutil>=2.8.2
-pytz>=2021.3
-
-# PDF Processing (if needed)
-PyPDF2>=2.0.0
-pdf2image>=1.16.0
-reportlab>=3.6.0
-
-# Additional Utilities
-tqdm>=4.60.0
-loguru>=0.5.0
-colorama>=0.4.4
-click>=8.0.0
-
-
-# Type Hinting (for development)
-typing-extensions>=4.0.0
-
-# Performance Optimization
-psutil>=5.8.0
